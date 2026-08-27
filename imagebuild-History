@@ -1,0 +1,99 @@
+ 18  docker run -d --name=c1 -p 9090:80 -v /samosa:/dosa -v samosa:/idli --tmpfs /logs --cpus="0.0001" --memory=15M -v /database:/samosa -v database:/vadapav httpd
+   19  docker stats c1
+   20  history
+   21  clear
+   22  cd ~
+   23  docker networ ls
+   24  docker network ls
+   25  docker rm -f c1
+   26  docker run -d --name=c1 --network host httpd
+   27  docker ps -a
+   28  docker inspect c1 | grep -i ipaddr
+   29  docker exec -it c1 bash
+   30  curl localhost
+   31  docker run -d --name=c2 --network host httpd
+   32  docker ps -a
+   33  docker logs c2
+   34  clear
+   35  docker run -d --name=g1 grafana/grafana
+   36  docker ps -a
+   37  docker rm -f g1
+   38  docker run -d --name=g1 --network host  grafana/grafana
+   39  docker ps -a
+   40  docker rm -f g1
+   41  docker rm -f c1 c2
+   42  clear
+   43  docker network ls
+   44  docker run -d --name=n1 --network=null httpd
+   45  docker run -d --name=n1 --network=none httpd
+   46  docker rm -f n1
+   47  docker run -d --name=n1 --network=none httpd
+   48  docker ps -a
+   49  docker inspect n1 | grep -i ipaddr
+   50  docker exec -it n1 bash
+   51  history
+   52  clear
+   53  docker info
+   54  clear
+   55  docker ps -a
+   56  ip a s
+   57  docker run -d --name=c1 httpd
+   58  docker exec -it c1 bash
+   59  clear
+   60  docker info
+   61  clear
+   62  apt update
+   63  apt install apache2 -y
+   64  clear
+   65  cd /var/www/html/
+   66  > index.html
+   67  vi index.html
+   68  systemctl restart apache2
+   69  mkdir /dockerfiles
+   70  cd /dockerfiles/
+   71  touch 1.df one.dockerfile dockerfile
+   72  ls
+   73  touch 1.df
+   74  touch index.html
+   75  vi index.html
+   76  vi 1.df
+   77  env
+   78  vi 1.df
+   79  clear
+   80  ls
+   81  touch 1.txt 2.txt
+   82  tar -cvf 1.tar *
+   83  ls
+   84  cat 1.df
+   85  clear
+   86  vi 1.df
+   87  docker build . -f 1.df -t kharatramesh/simplelogic:webserverv1.0
+   88  clear
+   89  docker images
+   90  docker push kharatramesh/simplelogic:webserverv1.0
+   91  docker login -u kharatramesh
+   92  clear
+   93  docker push kharatramesh/simplelogic:webserverv1.0
+   94  clear
+   95  docker images
+   96  docker run -d --name=s1 -p 9090:80 kharatramesh/simplelogic:webserverv1.0
+   97  docker ps -a
+   98  docker logs s1
+   99  vi 1.df
+  100  clear
+  101  docker build . -f 1.df -t kharatramesh/simplelogic:webserverv1.0 --no-cache
+  102  clear
+  103  docker push kharatramesh/simplelogic:webserverv1.0
+  104  docker run -d --name=s2 -p 9091:80 kharatramesh/simplelogic:webserverv1.0
+  105  docker ps -a
+  106  clear
+  107  docker images
+  108  docker inspect 8f2a6629f71b
+  109  clearf
+  110  clear
+  111  docker exec -it s2 bash
+  112  df -h
+  113  cat 1.df
+  114  clear
+  115  docker exec -it s2 bash
+  116  cat 1.df
