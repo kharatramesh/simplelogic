@@ -1,0 +1,21 @@
+FROM ubuntu
+MAINTAINER "admin@sl.com"
+LABEL "app"="sbiUPI"
+LABEL "env"="prod"
+RUN apt update
+RUN apt install apache2 -y
+WORKDIR /samosa/dosa
+WORKDIR idli
+WORKDIR vada
+COPY 1.txt /samosa
+ADD 2.txt /samosa/dosa
+COPY 1.tar /samosa
+ADD 1.tar /samosa/dosa
+ADD https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.85-installer.msi /home
+COPY . .
+EXPOSE 80
+ENV a=10
+ARG c=20
+VOLUME test
+COPY index.html /var/www/html
+CMD ["apache2ctl","-D","FOREGROUND"]
